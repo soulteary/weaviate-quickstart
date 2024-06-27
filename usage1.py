@@ -25,7 +25,7 @@ embeddings = outputs.last_hidden_state[:, 0]
  
 # 标准化 embeddings，使用 L2 归一化，使其长度为 1
 embeddings = F.normalize(embeddings, p=2, dim=1)
-# 计算相似度
+# 计算相似度，选择第一个元素，和除了第一个元素进行比较
 scores = (embeddings[:1] @ embeddings[1:].T) * 100
 # 打印结果分数
 print(scores.tolist())
